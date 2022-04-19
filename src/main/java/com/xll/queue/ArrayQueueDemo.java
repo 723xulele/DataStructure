@@ -5,18 +5,14 @@ import java.util.Scanner;
 /**
  * @Author xulele
  * @Date: 2022/04/19/22:55
- * @Description:
- *
- * 队列:
- *  1.队列的使用场景  银行排队窗口
- *  2.队列的介绍
- *      a.队列是一个有序列表,可以用数组或链表来实现
- *      b.遵循先入先出的原则,即线存入队列的数据,要先取出,后存入的后取出
- *  3. 问题分析并优化
- *      a.目前数组使用一次就不能使用,没有达到复用的效果
- *      b.将这个数组使用算法,改进成一个环形队列 取模的方式完成
- *
- *
+ * @Description: 队列:
+ * 1.队列的使用场景  银行排队窗口
+ * 2.队列的介绍
+ * a.队列是一个有序列表,可以用数组或链表来实现
+ * b.遵循先入先出的原则,即线存入队列的数据,要先取出,后存入的后取出
+ * 3. 问题分析并优化
+ * a.目前数组使用一次就不能使用,没有达到复用的效果
+ * b.将这个数组使用算法,改进成一个环形队列 取模的方式完成
  */
 public class ArrayQueueDemo {
 
@@ -36,32 +32,32 @@ public class ArrayQueueDemo {
             key = scanner.next().charAt(0); // 接收一个字符
 
             switch (key) {
-                case 's' :
+                case 's':
                     queue.showQueue();
                     break;
-                case 'a' :
+                case 'a':
                     System.out.println("请输入一个数字");
                     int value = scanner.nextInt();
                     queue.addQueue(value);
                     break;
-                case 'g' :
+                case 'g':
                     try {
                         int res = queue.getQueue();
-                        System.out.printf("取出的数据是%d\n",res);
+                        System.out.printf("取出的数据是%d\n", res);
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 'h' :
+                case 'h':
                     try {
                         int head = queue.headQueue();
-                        System.out.printf("队列头的数据是%d\n",head);
+                        System.out.printf("队列头的数据是%d\n", head);
                     } catch (Exception e) {
                         e.printStackTrace();
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 'e' :
+                case 'e':
                     scanner.close();
                     loop = false;
                     break;
@@ -125,24 +121,24 @@ class ArrayQueue {
     }
 
     //显示队列的所有数据
-    public void showQueue(){
+    public void showQueue() {
         //遍历数组
         if (isEmpty()) {
             System.out.println("队列为空");
             return;
         }
         for (int i = 0; i < arr.length; i++) {
-            System.out.printf("arr[%d]=%d\n",i,arr[i]);
+            System.out.printf("arr[%d]=%d\n", i, arr[i]);
         }
     }
 
     //显示队列的头数据,注意不是取出数据
-    public int headQueue(){
+    public int headQueue() {
         //判断是否空
         if (isEmpty()) {
             throw new RuntimeException("队列空没有数据");
         }
-        return arr[front+1];
+        return arr[front + 1];
     }
 
 }
